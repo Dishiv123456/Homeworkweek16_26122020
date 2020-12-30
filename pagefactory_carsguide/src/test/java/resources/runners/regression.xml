@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite [
+        <!ELEMENT suite (listeners|test)*>
+        <!ATTLIST suite
+                name CDATA #REQUIRED
+                verbose CDATA #REQUIRED>
+        <!ELEMENT listeners (listener)*>
+        <!ELEMENT listener (#PCDATA)>
+        <!ATTLIST listener
+                class-name CDATA #REQUIRED>
+        <!ELEMENT test (groups|classes)*>
+        <!ATTLIST test
+                name CDATA #REQUIRED>
+        <!ELEMENT groups (run)*>
+        <!ELEMENT run (include)*>
+        <!ELEMENT include (#PCDATA)>
+        <!ATTLIST include
+                name CDATA #REQUIRED>
+        <!ELEMENT classes (class)*>
+        <!ELEMENT class (#PCDATA)>
+        <!ATTLIST class
+                name CDATA #REQUIRED>
+        ]>
+<suite name="testsuite" verbose="1">
+    <listeners>
+        <listener class-name="au.com.carsguide.customlisteners.CustomListeners"></listener>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+
+    </listeners>
+    <test name="regression test">
+
+        <groups>
+           <run>
+               <include name="regression"></include>
+           </run>
+
+        </groups>
+        <classes>
+            <class name="au.com.carsguide.testsuite.SearchCarsTest"></class>
+            <class name="au.com.carsguide.testsuite.UsedSearchCarTest"></class>
+        </classes>
+
+    </test>
+
+</suite>
